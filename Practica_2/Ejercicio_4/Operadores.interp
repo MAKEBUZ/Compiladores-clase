@@ -1,0 +1,22 @@
+token literal names:
+null
+'+'
+'-'
+'*'
+'/'
+null
+
+token symbolic names:
+null
+MAS
+MENOS
+MUL
+DIV
+WS
+
+rule names:
+op
+
+
+atn:
+[4, 1, 5, 5, 2, 0, 7, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 4, 3, 0, 2, 1, 0, 0, 0, 2, 3, 7, 0, 0, 0, 3, 1, 1, 0, 0, 0, 0]
