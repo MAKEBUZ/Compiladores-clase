@@ -68,95 +68,18 @@ backend/
 │   │   ├── notification.config.ts
 │   │   └── migrations/       # Scripts SQL de migración (001-017)
 │   ├── controllers/          # Controladores HTTP (handlers de rutas)
-│   │   ├── user.controller.ts
-│   │   ├── unit-type.controller.ts
-│   │   ├── statistics.controller.ts
-│   │   └── __tests__/        # Tests de controladores
 │   ├── middlewares/          # Middlewares de Express
-│   │   ├── auth.middleware.ts          # Verificación JWT
-│   │   ├── role.middleware.ts          # Verificación de roles
-│   │   ├── validation.middleware.ts    # Validación Zod
-│   │   ├── rate-limit.middleware.ts    # Rate limiting global
-│   │   ├── logger.middleware.ts        # Logging de peticiones HTTP
-│   │   ├── correlation.middleware.ts # IDs de correlación
-│   │   ├── errorHandler.middleware.ts# Manejo centralizado de errores
-│   │   └── auditLog.middleware.ts      # Auditoría de operaciones
 │   ├── models/               # Interfaces/Types de dominio
-│   │   ├── user.model.ts
-│   │   ├── product.model.ts
-│   │   ├── producer-product.model.ts
-│   │   ├── order-status.model.ts
-│   │   ├── notification.model.ts
-│   │   ├── minga.model.ts
-│   │   ├── live-purchases.model.ts
-│   │   ├── attendance-list.model.ts
-│   │   ├── announcement.model.ts
-│   │   └── ...
 │   ├── repositories/         # Acceso a datos (Patrón Repository)
-│   │   ├── user.repository.ts
-│   │   ├── product.repository.ts
-│   │   ├── producer.repository.ts
-│   │   ├── order.repository.ts
-│   │   ├── event.repository.ts
-│   │   ├── admin-*.repository.ts (repositorios administrativos)
-│   │   └── ...
 │   ├── routes/               # Definición de endpoints de la API
-│   │   ├── auth.routes.ts
-│   │   ├── product.routes.ts
-│   │   ├── order.routes.ts
-│   │   ├── producer.routes.ts
-│   │   ├── producer-product.routes.ts
-│   │   ├── producer-admin.routes.ts
-│   │   ├── admin.routes.ts
-│   │   ├── user.routes.ts
-│   │   ├── minga.routes.ts
-│   │   ├── announcement.routes.ts
-│   │   ├── notification.routes.ts
-│   │   ├── statistics.routes.ts
-│   │   ├── unit-type.routes.ts
-│   │   ├── product-request.routes.ts
-│   │   ├── attendance-list.routes.ts
-│   │   ├── live-purchases.routes.ts
-│   │   ├── invoice.routes.ts
-│   │   ├── order-period.routes.ts
-│   │   ├── event.routes.ts
-│   │   ├── event-attendance.routes.ts
-│   │   ├── dashboard.routes.ts
-│   │   └── upload.routes.ts
 │   ├── schemas/              # Esquemas de validación Zod
-│   │   ├── producer.schema.ts
-│   │   ├── event.schema.ts
-│   │   ├── order.schema.ts
-│   │   └── search.schema.ts
 │   ├── services/             # Lógica de negocio (Patrón Service)
-│   │   ├── auth.service.ts
-│   │   ├── session.service.ts
-│   │   ├── rate-limit.service.ts
-│   │   ├── product.service.ts
-│   │   ├── producer.service.ts
-│   │   ├── order.service.ts
-│   │   ├── invoice.service.ts
-│   │   ├── pdf.service.ts
-│   │   ├── image.service.ts
-│   │   ├── notification.service.ts
-│   │   ├── event.service.ts
-│   │   ├── dashboard.service.ts
-│   │   └── admin-producer.service.ts
 │   ├── kafka/                # Productores y consumidores de Kafka
-│   │   ├── producer.ts
-│   │   ├── consumer.ts
-│   │   └── events.ts
 │   ├── types/                # Tipos globales de TypeScript
-│   │   └── express.d.ts
 │   ├── utils/                # Utilidades
-│   │   └── slugify.ts
 │   ├── app.ts                # Configuración principal de Express
 │   └── server.ts             # Punto de entrada, bootstrap y shutdown
 ├── scripts/                  # Scripts de utilidad (Node.js)
-│   ├── test-attendance.js
-│   ├── run-migration-012.js
-│   ├── run-migration-011.js
-│   └── check-db.js
 ├── uploads/                  # Directorio de archivos subidos (imágenes)
 ├── tests/                    # Tests adicionales (si existen)
 ├── jest.config.js            # Configuración de Jest
@@ -221,147 +144,52 @@ frontend/
 │   │   ├── layout.tsx                # Layout raíz (AuthProvider, OrderProvider)
 │   │   └── favicon.ico
 │   ├── auth/
-│   │   └── register/
-│   │       └── page.tsx              # Registro de usuarios
+│   │   └── register/          
 │   ├── usuario/
-│   │   └── page.tsx                  # Perfil de usuario
 │   ├── admin/
-│   │   ├── page.tsx                  # Dashboard administrativo
 │   │   ├── usuarios/
-│   │   │   └── page.tsx              # Gestión de usuarios
 │   │   ├── asistencia/
-│   │   │   └── page.tsx              # Control de asistencia
 │   │   ├── productos/
-│   │   │   └── page.tsx              # Gestión de productos
 │   │   ├── pedidos/
-│   │   │   └── page.tsx              # Gestión de pedidos
 │   │   ├── productores/
-│   │   │   └── page.tsx              # Gestión de productores
 │   │   ├── mingas/
-│   │   │   └── page.tsx              # Gestión de mingas
 │   │   ├── configuracion/
-│   │   │   └── page.tsx              # Configuración del sistema
 │   │   ├── anuncios/
-│   │   │   └── page.tsx              # Gestión de anuncios
 │   │   ├── eventos/
-│   │   │   └── page.tsx              # Gestión de eventos
 │   │   ├── reportes/
-│   │   │   └── page.tsx              # Reportes y estadísticas
 │   │   └── reportes-productores/
-│   │       └── page.tsx              # Reportes por productor
-│   ├── pages/                        # Componentes de página reutilizables
+│   ├── pages/       
 │   │   ├── landing/
-│   │   │   └── LandingPage.tsx
 │   │   ├── products/
-│   │   │   └── ProductsPage.tsx
 │   │   ├── product/
-│   │   │   └── ProductDetailPage.tsx
 │   │   ├── user/
-│   │   │   └── UserPage.tsx
 │   │   ├── notifications/
-│   │   │   └── NotificationsPage.tsx
 │   │   ├── announcements/
-│   │   │   └── AnnouncementsPage.tsx
 │   │   ├── admin/
-│   │   │   └── AdminPage.tsx
 │   │   └── legal/
-│   │       └── LegalPageLayout.tsx
 │   ├── components/                   # Componentes React reutilizables
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   ├── UserAvatar.tsx
-│   │   ├── ProductCard.tsx
-│   │   ├── ProductoForm.tsx
-│   │   ├── SearchBar.tsx
-│   │   ├── ProfileEditForm.tsx
-│   │   ├── SessionModal.tsx
-│   │   ├── Toast.tsx
-│   │   ├── EventCard.tsx
-│   │   ├── AnnouncementCard.tsx
-│   │   ├── MingaStrip.tsx
-│   │   ├── MingaMap.tsx
-│   │   ├── MingaMapPlaceholder.tsx
-│   │   ├── AdminUserEditForm.tsx
-│   │   └── AdminMingaForm.tsx
 │   ├── controllers/                  # Lógica de control para las vistas
-│   │   ├── landing.controller.ts
-│   │   ├── products.controller.ts
-│   │   ├── product-detail.controller.ts
-│   │   ├── producer.controller.ts
-│   │   ├── notification.controller.ts
-│   │   ├── minga.controller.ts
-│   │   ├── admin.controller.ts
-│   │   └── user.controller.ts
 │   ├── repositories/                 # Acceso a datos del frontend (API client)
-│   │   ├── user.repository.ts
-│   │   ├── product.repository.ts
-│   │   ├── producer.repository.ts
-│   │   ├── order.repository.ts
-│   │   ├── notification.repository.ts
-│   │   ├── minga.repository.ts
-│   │   ├── event.repository.ts
-│   │   ├── announcement.repository.ts
-│   │   ├── admin.repository.ts
-│   │   └── unit-type.repository.ts
 │   ├── models/                       # Interfaces/Types del frontend
-│   │   ├── user.model.ts
-│   │   ├── product.model.ts
-│   │   ├── order.model.ts
-│   │   ├── notification.model.ts
-│   │   ├── minga.model.ts
-│   │   ├── event.model.ts
-│   │   ├── announcement.model.ts
-│   │   └── admin.model.ts
 │   ├── context/                      # Contextos de React
-│   │   ├── AuthContext.tsx           # Estado global de autenticación
-│   │   └── OrderContext.tsx          # Estado global de pedidos
 │   ├── hooks/                        # Custom Hooks
-│   │   ├── useNotifications.ts
-│   │   ├── useEventWindow.ts
-│   │   └── useClickOutside.ts
 │   ├── lib/                          # Utilidades
-│   │   ├── slugify.ts
-│   │   └── api.ts                    # Configuración base de Axios
 │   ├── ... (más rutas de páginas)
 │   ├── pedido/
-│   │   └── page.tsx                  # Detalle de pedido
 │   ├── mis-pedidos/
-│   │   ├── page.tsx                  # Listado de pedidos
-│   │   └── [id]/
-│   │       └── page.tsx              # Detalle de un pedido específico
 │   ├── mingas/
-│   │   ├── page.tsx                  # Listado de mingas
 │   │   └── [slug]/
-│   │       └── page.tsx              # Detalle de una minga
 │   ├── gestion-productos/
-│   │   └── page.tsx                  # Gestión de productos (productor)
 │   ├── ofertar-productos/
-│   │   └── page.tsx                  # Oferta de productos
 │   ├── solicitar-producto/
-│   │   └── page.tsx                  # Solicitud de productos
 │   ├── anuncios/
-│   │   └── page.tsx                  # Listado de anuncios
 │   ├── notifications/
-│   │   └── page.tsx                  # Centro de notificaciones
 │   ├── terms-and-conditions/
-│   │   └── page.tsx                  # Términos y condiciones
 │   └── privacy-policy/
-│       └── page.tsx                  # Política de privacidad
 ├── components/
-│   └── ui/                           # Componentes de UI base (shadcn/ui)
-│       ├── button.tsx
-│       └── map.tsx
 ├── styles/                           # Estilos globales y tokens
-│   ├── globals.css
-│   ├── tokens.css
-│   └── utilities.css
 ├── public/                           # Assets estáticos
 │   ├── images/                       # Logos y fotos de organizaciones
-│   ├── window.svg
-│   ├── vercel.svg
-│   ├── next.svg
-│   ├── file.svg
-│   └── globe.svg
 ├── lib/
 │   └── utils.ts                      # Utilidades (cn, etc.)
 ├── next.config.ts                    # Configuración de Next.js
